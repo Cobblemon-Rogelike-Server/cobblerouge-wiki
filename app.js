@@ -14,6 +14,8 @@ const iconPaths = {
   arrow: '<path d="M5 12h14m-6-6 6 6-6 6"/>',
   book: '<path d="M12 6C8 3 4 3 2 4v15c4-1 7 0 10 2 3-2 6-3 10-2V4c-3-1-7-1-10 2Zm0 0v15"/>',
   close: '<path d="m6 6 12 12M6 18 18 6"/>'
+  ,swords: '<path d="m4 3 7 5 10 12-2 2L7 11 3 4zM14 7l6-4 1 1-4 7M5 15l4 4M3 21l4-4M15 16l4-4"/>'
+  ,users: '<circle cx="9" cy="7" r="3"/><path d="M2 21v-3a7 7 0 0 1 14 0v3M17 4a3 3 0 0 1 0 6M22 21v-3a6 6 0 0 0-4-5"/>'
 };
 const icon = (name) => `<svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${iconPaths[name] || iconPaths.book}</svg>`;
 const esc = (value) => String(value).replace(/[&<>"']/g, (ch) => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch]));
@@ -34,7 +36,7 @@ function picture(path, className = '', alt = '') {
 }
 
 function navigation(active) {
-  $('#navigation').innerHTML = `<a href="#/" class="nav-item ${active === 'home' ? 'active' : ''}" ${active === 'home' ? 'aria-current="page"' : ''}>${icon('home')}<span>위키 홈</span></a><p class="nav-label nav-section">농장과 섬 생활</p>` + data.categories.map((c) => `<a href="#/${c.id}" class="nav-item ${active === c.id ? 'active' : ''}" ${active === c.id ? 'aria-current="page"' : ''}>${icon(c.icon)}<span>${c.name}</span><span class="nav-count">${entries(c.id).length}</span></a>`).join('');
+  $('#navigation').innerHTML = `<a href="#/" class="nav-item ${active === 'home' ? 'active' : ''}" ${active === 'home' ? 'aria-current="page"' : ''}>${icon('home')}<span>위키 홈</span></a><p class="nav-label nav-section">농장과 섬 생활</p>` + data.categories.map((c) => `${c.id === 'dungeon' ? '<p class="nav-label nav-section">모험과 탐험단</p>' : ''}<a href="#/${c.id}" class="nav-item ${active === c.id ? 'active' : ''}" ${active === c.id ? 'aria-current="page"' : ''}>${icon(c.icon)}<span>${c.name}</span><span class="nav-count">${entries(c.id).length}</span></a>`).join('');
 }
 
 function breadcrumb(parts) {
@@ -49,7 +51,7 @@ function card(article) {
 function home() {
   navigation('home');
   document.title = 'CobbleRouge 위키 — 씨앗부터 수확까지';
-  const collections = data.categories.filter((c) => c.id !== 'guides');
+  const collections = data.categories.filter((c) => ['crops', 'trees', 'wood', 'decor'].includes(c.id));
   const featured = ['first-harvest', 'growing', 'building'].map((id) => data.articles.find((a) => a.id === id)).filter(Boolean);
   main.innerHTML = `
     <section class="hero">
@@ -58,6 +60,7 @@ function home() {
     </section>
     <section class="collection-section"><div class="section-heading"><div><span class="eyebrow">EXPLORE THE WIKI</span><h2>무엇을 찾아볼까요?</h2></div><span class="section-note">궁금한 분야부터 가볍게 둘러보세요</span></div><div class="collections">${collections.map((c, i) => `<a href="#/${c.id}" class="collection collection-${c.id}"><div class="collection-top"><span class="collection-icon">${icon(c.icon)}</span><span class="collection-number">0${i + 1}</span></div><h3>${c.name}</h3><p>${c.description}</p><div class="collection-footer"><span>${c.id === 'crops' ? '56종 + 재배 도구' : entries(c.id).length + '개 모음'}</span>${icon('arrow')}</div></a>`).join('')}</div></section>
     <section class="guide-section"><div class="section-heading"><div><span class="eyebrow">NOTES FROM THE GARDEN</span><h2>농장 일을 시작하기 전에</h2></div><a class="text-link" href="#/guides">길라잡이 전체 ${icon('arrow')}</a></div><div class="featured-guides">${featured.map((a, i) => `<a class="featured-guide" href="${routeOf(a)}"><span class="guide-number">0${i + 1}</span><div><span class="entry-group">${i === 0 ? '첫 수확' : i === 1 ? '재배의 기본' : '나만의 섬'}</span><h3>${esc(a.title)}</h3><p>${esc(a.summary)}</p></div><span class="card-arrow">${icon('arrow')}</span></a>`).join('')}</div></section>
+    <section class="adventure-section"><div class="section-heading"><div><span class="eyebrow">BEYOND THE GARDEN</span><h2>농장 너머, 새로운 모험</h2></div></div><div class="adventure-grid">${['dungeon','guild'].map((id)=>{const c=category(id);return `<a class="adventure-card adventure-${id}" href="#/${id}"><span class="adventure-icon">${icon(c.icon)}</span><div><span class="eyebrow">${c.label}</span><h3>${c.name}</h3><p>${c.description}</p><span class="adventure-topics">${id==='dungeon'?'입장 · 여섯 종류의 방 · 전리품 · 전투 · 종료 보상':'가입 · 주간 의뢰 · 금고와 혜택 · 합동 탐사'}</span></div><span class="card-arrow">${icon('arrow')}</span></a>`;}).join('')}</div></section>
     <aside class="wiki-tip"><span class="tip-icon">${icon('book')}</span><div><strong>열매도, 성장 모습도 입체적으로</strong><p>게임 속 모습으로 찍은 그림과 함께 씨앗, 열매, 성장 단계와 조합법을 살펴보세요.</p></div><a href="#/crops">작물 둘러보기 ${icon('arrow')}</a></aside>`;
 }
 

@@ -14,6 +14,8 @@ CATEGORIES = [
     {'id': 'trees', 'name': '전용 나무', 'label': 'TREES', 'description': '작은 살구나무부터 거대한 세계나무까지', 'icon': 'tree'},
     {'id': 'wood', 'name': '목재 세트', 'label': 'BUILDING', 'description': '나만의 섬을 만드는 여덟 가지 목재', 'icon': 'blocks'},
     {'id': 'decor', 'name': '장식 블록', 'label': 'DECORATION', 'description': '등불과 바구니로 채우는 작은 풍경', 'icon': 'lamp'},
+    {'id': 'dungeon', 'name': '던전 도감', 'label': 'DUNGEON', 'description': '입장 준비부터 여섯 종류의 방과 보상까지', 'icon': 'swords'},
+    {'id': 'guild', 'name': '탐험단', 'label': 'GUILD', 'description': '함께 쌓는 의뢰, 탐사와 탐험단의 성장', 'icon': 'users'},
 ]
 
 
@@ -146,13 +148,16 @@ def collect():
             elif category == 'crops' and group and line.strip():
                 growing_notes.append(line)
         flush()
-    for path in sorted((ROOT / 'content' / 'guides').glob('*.md')):
-        source = path.read_text()
-        title, _, body = source.partition('\n')
-        a = article('guides', title.removeprefix('# '), '플레이 가이드', body, 0, path.stem)
-        first = next((line for line in body.splitlines() if line.strip() and not line.startswith(('#', '>'))), '')
-        a['summary'] = text_only(first)[:130]
-        articles.insert(0, a)
+    for collection in ('guides', 'dungeon', 'guild'):
+        label = next(c['name'] for c in CATEGORIES if c['id'] == collection)
+        for path in sorted((ROOT / 'content' / collection).glob('*.md')):
+            source = path.read_text()
+            title, _, body = source.partition('\n')
+            identity = path.stem if collection == 'guides' else collection + '-' + path.stem
+            a = article(collection, title.removeprefix('# '), label, body, 0, identity)
+            first = next((line for line in body.splitlines() if line.strip() and not line.startswith(('#', '>', '<img'))), '')
+            a['summary'] = text_only(first)[:130]
+            articles.append(a)
     return articles
 
 
