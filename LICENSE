@@ -1,0 +1,198 @@
+Cobblemon Roguelike — 독점 라이선스 (All Rights Reserved)
+
+Copyright (c) 2026 Duskafka. All rights reserved.
+저작권자: Duskafka (GitHub: @Duskafka)
+
+================================================================================
+한국어 (원본 — 해석상 충돌이 있으면 이 한국어 본문이 우선합니다)
+================================================================================
+
+제0조 (정의)
+
+  "본 소프트웨어"란 이 저장소에 포함된, 저작권자가 작성한 모든 소스 코드, 설정
+  파일, 텍스처, 문서, 그리고 그로부터 빌드된 모든 산출물(.jar 등)을 말합니다.
+  제4조에 따른 제3자 구성요소는 본 소프트웨어에 포함되지 않습니다.
+
+  "귀하"란 어떤 방법으로든 본 소프트웨어 또는 그 일부를 취득한 모든 개인 및
+  법인을 말합니다.
+
+제1조 (권리 유보)
+
+  본 소프트웨어에 관한 모든 권리는 저작권자에게 유보됩니다. 본 라이선스는
+  제3조에서 명시적으로 허용한 범위를 제외하고 어떠한 권리도 부여하지 않습니다.
+  명시되지 않은 것은 모두 금지된 것으로 해석합니다.
+
+제2조 (금지사항)
+
+  저작권자의 사전 서면 허락 없이 다음 행위를 할 수 없습니다.
+
+  1. 수정 — 본 소프트웨어의 전부 또는 일부를 수정, 번안, 개조하거나, 이를
+     기반으로 2차적 저작물을 작성하는 행위.
+
+  2. 배포 — 본 소프트웨어의 전부 또는 일부를 복제, 배포, 전송, 공중송신,
+     대여, 판매, 재라이선스하거나, 모드팩·서버팩·저장소·파일 공유 등 어떠한
+     형태로든 제3자가 취득할 수 있게 하는 행위.
+
+  3. 열람 및 역공학 — 본 소프트웨어의 소스 코드를 열람·복사·공개하는 행위,
+     그리고 빌드 산출물을 역컴파일(decompile), 역어셈블, 역공학하거나 그로부터
+     소스 코드 또는 설계를 추출하려 시도하는 행위.
+
+  4. 위 각 호의 행위를 제3자에게 하게 하거나 이를 돕는 행위.
+
+제3조 (플레이어에게 허용되는 범위)
+
+  저작권자가 운영하거나 명시적으로 승인한 서버에 접속하여 플레이할 목적에
+  한하여, 저작권자가 배포한 빌드 산출물을 다운로드하고 본인의 기기에서 실행할
+  수 있습니다. 이 허락은 다음과 같습니다.
+
+  1. 비독점적이고, 양도할 수 없으며, 재라이선스할 수 없습니다.
+  2. 저작권자가 언제든지 사유 없이 철회할 수 있습니다.
+  3. 실행 이외의 어떠한 행위도 포함하지 않습니다. 특히 제2조의 금지사항은
+     이 허락에도 그대로 적용됩니다.
+
+  이 조항은 본 모드가 클라이언트 측 화면(가챠 결과 화면 등)을 포함하기 때문에
+  존재합니다. 플레이어가 모드를 설치하지 않으면 서버가 작동하지 않으므로,
+  실행 권한만을 최소한으로 부여합니다.
+
+제4조 (제3자 구성요소)
+
+  본 소프트웨어는 다음 제3자 저작물에 의존하며, 일부는 빌드 산출물에 포함될
+  수 있습니다. 이들은 본 소프트웨어에 포함되지 않고, 각자의 라이선스가 적용
+  됩니다. 본 라이선스의 어떤 조항도 제3자 라이선스가 귀하에게 부여한 권리를
+  제한하지 않습니다.
+
+  - Cobblemon — Mozilla Public License 2.0
+  - Fabric Loader, Fabric API, Fabric Language Kotlin — Apache License 2.0
+  - kotlinx.serialization (빌드 산출물에 포함됨) — Apache License 2.0
+  - Kotlin 표준 라이브러리 — Apache License 2.0
+  - Minecraft — Mojang/Microsoft의 최종 사용자 라이선스 계약(EULA)
+
+  Cobblemon은 MPL 2.0에 따라 파일 단위 카피레프트가 적용됩니다. 본 소프트웨어는
+  Cobblemon의 파일을 수정하지 않고 그 공개 API만 호출하므로, 저작권자가 작성한
+  파일에는 MPL이 적용되지 않습니다. 다만 Cobblemon의 산출물을 함께 재배포하는
+  경우에는 MPL 2.0 제3조에 따른 소스 코드 제공 의무가 재배포자에게 발생합니다.
+
+제5조 (법률상 유보)
+
+  제2조 제3호의 역공학 금지는 준거법이 강행규정으로 허용하는 범위(예: 대한민국
+  저작권법 제101조의4에 따른 호환성 확보를 위한 프로그램코드역분석, 유럽연합
+  Directive 2009/24/EC 제6조)에서는 적용되지 않습니다. 이 조항은 그러한 강행
+  규정을 배제하려는 의도가 아닙니다.
+
+제6조 (위반 및 종료)
+
+  본 라이선스를 위반하는 즉시 제3조의 허락은 자동으로 소멸하며, 귀하는 보유한
+  모든 복제물을 삭제해야 합니다. 이는 저작권자가 보유한 다른 법적 구제수단에
+  영향을 주지 않습니다.
+
+제7조 (보증 부인 및 책임 제한)
+
+  본 소프트웨어는 "있는 그대로" 제공되며, 상품성, 특정 목적 적합성, 권리
+  비침해에 대한 보증을 포함하여 명시적이든 묵시적이든 어떠한 보증도 하지
+  않습니다. 저작권자는 본 소프트웨어의 사용 또는 사용 불능으로 인해 발생한
+  어떠한 손해에 대해서도 책임을 지지 않습니다. 이 조항은 강행규정에 반하지
+  않는 범위에서 적용됩니다.
+
+제8조 (문의)
+
+  수정, 배포, 소스 열람 등 위 금지사항에 대한 허락은 저작권자(GitHub: @Duskafka)
+  에게 개별적으로 문의하여 서면으로 받아야 합니다.
+
+================================================================================
+English (translation for convenience — the Korean text above controls)
+================================================================================
+
+0. DEFINITIONS
+
+  "the Software" means all source code, configuration files, textures,
+  documentation and build artifacts (.jar and the like) in this repository that
+  were authored by the copyright holder. The third-party components listed in
+  Section 4 are not part of the Software.
+
+  "You" means any individual or entity that obtains the Software or any part of
+  it by any means.
+
+1. RESERVATION OF RIGHTS
+
+  All rights in the Software are reserved by the copyright holder. This license
+  grants no rights except those expressly stated in Section 3. Anything not
+  expressly permitted is prohibited.
+
+2. PROHIBITED ACTS
+
+  Without the prior written permission of the copyright holder, You may not:
+
+  1. Modify — modify, adapt, translate or create derivative works of the
+     Software or any part of it;
+
+  2. Distribute — copy, distribute, transmit, publish, lend, sell, sublicense
+     or otherwise make the Software or any part of it available to any third
+     party, including through modpacks, server packs, repositories or file
+     sharing;
+
+  3. View or reverse engineer — view, copy or publish the Software's source
+     code, or decompile, disassemble or reverse engineer any build artifact, or
+     attempt to derive source code or design from it;
+
+  4. Cause or assist any third party to do any of the above.
+
+3. WHAT PLAYERS MAY DO
+
+  Solely in order to play on a server operated or expressly authorized by the
+  copyright holder, You may download build artifacts distributed by the
+  copyright holder and run them on Your own device. This permission is
+  non-exclusive, non-transferable, non-sublicensable, revocable at any time
+  without cause, and covers nothing beyond running the Software — the
+  prohibitions in Section 2 continue to apply.
+
+  This section exists because the mod includes client-side screens, so a player
+  who has not installed it cannot play at all. It grants the minimum needed for
+  that and nothing more.
+
+4. THIRD-PARTY COMPONENTS
+
+  The Software depends on, and its build artifacts may bundle, the following
+  third-party works. They are not part of the Software and remain subject to
+  their own licenses. Nothing in this license restricts any right those
+  licenses grant You.
+
+  - Cobblemon — Mozilla Public License 2.0
+  - Fabric Loader, Fabric API, Fabric Language Kotlin — Apache License 2.0
+  - kotlinx.serialization (bundled in build artifacts) — Apache License 2.0
+  - Kotlin standard library — Apache License 2.0
+  - Minecraft — Mojang/Microsoft End User License Agreement
+
+  Cobblemon's MPL 2.0 is file-level copyleft. The Software does not modify
+  Cobblemon's files and only calls its public API, so MPL does not reach the
+  files authored by the copyright holder. Anyone who redistributes Cobblemon's
+  own artifacts alongside the Software takes on MPL 2.0 Section 3's source
+  availability obligations for those artifacts.
+
+5. STATUTORY CARVE-OUT
+
+  The prohibition on reverse engineering in Section 2.3 does not apply to the
+  extent that applicable law grants a non-waivable right to do so — for example
+  decompilation for interoperability under Article 101-4 of the Korean
+  Copyright Act, or Article 6 of EU Directive 2009/24/EC. This license does not
+  attempt to override such provisions.
+
+6. TERMINATION
+
+  The permission in Section 3 terminates automatically upon any breach of this
+  license, and You must delete all copies in Your possession. This does not
+  limit any other remedy available to the copyright holder.
+
+7. NO WARRANTY; LIMITATION OF LIABILITY
+
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. THE COPYRIGHT HOLDER
+  SHALL NOT BE LIABLE FOR ANY DAMAGES ARISING FROM THE USE OF OR INABILITY TO
+  USE THE SOFTWARE, to the extent permitted by applicable law.
+
+8. CONTACT
+
+  Permission for anything in Section 2 — modification, distribution, source
+  access — must be requested from and granted in writing by the copyright
+  holder (GitHub: @Duskafka).
+
