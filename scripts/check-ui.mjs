@@ -402,6 +402,12 @@ try {
   ]) {
     await route(hash);
     await overflow("mobile " + hash);
+    if (hash === "#/article/crops-strawberry")
+      assert.equal(
+        await evaluate(`document.querySelector('.mobile-toc').hidden`),
+        true,
+        "short reference article has no empty contents menu",
+      );
     await images();
   }
   await shot("guild-mobile");
