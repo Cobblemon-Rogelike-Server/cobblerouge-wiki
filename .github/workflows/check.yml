@@ -1,0 +1,40 @@
+name: Check wiki
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: wiki-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  build-and-browser:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "24"
+      - name: Build and verify preserved assets
+        run: python3 scripts/build.py
+      - name: Check JavaScript
+        run: node --check app.js && node --check scripts/check-ui.mjs
+      - name: Check real browser and mobile layouts
+        env:
+          WIKI_UI_ARTIFACTS: ${{ runner.temp }}/wiki-screenshots
+        run: |
+          export CHROMIUM_PATH="$(command -v google-chrome || command -v chromium)"
+          test -n "$CHROMIUM_PATH"
+          node scripts/check-ui.mjs
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: wiki-screenshots
+          path: ${{ runner.temp }}/wiki-screenshots/*.png
+          if-no-files-found: ignore
+          retention-days: 7

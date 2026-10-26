@@ -9,7 +9,7 @@ from image_assets import restore
 ROOT = Path(__file__).resolve().parents[1]
 OUT = ROOT / 'dist'
 CATEGORIES = [
-    {'id': 'guides', 'name': '재배 길라잡이', 'label': 'GUIDE', 'description': '첫 씨앗부터 수확물로 섬을 꾸미기까지', 'icon': 'compass'},
+    {'id': 'guides', 'name': '플레이 길라잡이', 'label': 'GUIDE', 'description': '첫 모험 준비부터 재배와 섬 꾸미기까지', 'icon': 'compass'},
     {'id': 'crops', 'name': '서버 작물', 'label': 'FARMING', 'description': '심는 곳, 성장 과정, 수확과 가격', 'icon': 'sprout'},
     {'id': 'trees', 'name': '전용 나무', 'label': 'TREES', 'description': '작은 살구나무부터 거대한 세계나무까지', 'icon': 'tree'},
     {'id': 'wood', 'name': '목재 세트', 'label': 'BUILDING', 'description': '나만의 섬을 만드는 여덟 가지 목재', 'icon': 'blocks'},
@@ -167,6 +167,9 @@ def main():
     OUT.mkdir()
     for filename in ['index.html', 'styles.css', 'app.js', 'favicon.svg']:
         shutil.copy(ROOT / filename, OUT / filename)
+    editorial = ROOT / 'assets' / 'editorial'
+    if editorial.is_dir():
+        shutil.copytree(editorial, OUT / 'assets' / 'editorial')
     image_names = restore(OUT)
     shutil.copy(ROOT / 'LICENSE', OUT / 'LICENSE.txt')
     (OUT / '.nojekyll').write_text('')
