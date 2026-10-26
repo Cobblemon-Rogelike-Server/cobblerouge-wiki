@@ -1,32 +1,106 @@
 <!doctype html>
 <html lang="ko">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <meta name="theme-color" content="#244d3c">
-  <meta name="description" content="CobbleRouge 서버 위키. 작물 56종의 성장과 조합법, 던전의 방과 보상, 탐험단의 의뢰·금고·합동 탐사를 찾아보세요.">
-  <title>CobbleRouge 위키 — 씨앗부터 수확까지</title>
-  <link rel="icon" href="./favicon.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="./styles.css">
-  <script src="./app.js" defer></script>
-</head>
-<body>
-  <a class="skip" href="#main">본문으로 건너뛰기</a>
-  <header class="topbar">
-    <a class="brand" href="#/"><img src="./favicon.svg" width="34" height="34" alt=""><span>CobbleRouge <small>위키</small></span></a>
-    <div class="top-links"><span class="edition">서버 생활과 모험 도감</span><a href="https://github.com/Cobblemon-Rogelike-Server/cobblerouge-wiki" target="_blank" rel="noopener noreferrer">GitHub <span aria-hidden="true">↗</span></a><button id="menu-toggle" class="menu-toggle" aria-label="메뉴 열기" aria-controls="sidebar" aria-expanded="false">☰</button></div>
-  </header>
-  <aside class="sidebar" id="sidebar">
-    <p class="nav-label">발견하기</p>
-    <nav id="navigation" aria-label="위키 분류"></nav>
-    <div class="sidebar-note"><span class="tiny-sprout" aria-hidden="true">✦</span><strong>작은 발견이 쌓이는 곳</strong><p>낯선 씨앗 하나부터<br>풍성한 수확의 기쁨까지.</p></div>
-    <a class="report" href="https://github.com/Cobblemon-Rogelike-Server/cobblerouge-wiki/issues/new" target="_blank" rel="noopener noreferrer">틀린 내용 제보하기 <span aria-hidden="true">↗</span></a>
-  </aside>
-  <div class="workspace">
-    <div class="searchbar"><form id="search-form" role="search"><span id="search-icon" aria-hidden="true"></span><input id="search" type="search" name="q" autocomplete="off" placeholder="어떤 것이 궁금한가요?" aria-label="위키 전체 검색"><kbd aria-hidden="true">Ctrl K</kbd></form><span class="search-caption">이름 · 아이템 ID · 내용 검색</span></div>
-    <main id="main" tabindex="-1"><div class="loading" role="status">위키를 불러오고 있습니다…</div></main>
-    <footer><span><strong>CobbleRouge</strong> <span class="footer-dot">·</span> 함께 가꾸는 섬의 기록</span><a href="./LICENSE.txt">© 2026 Duskafka</a></footer>
-  </div>
-  <noscript><p class="noscript">이 위키를 탐색하려면 브라우저에서 JavaScript를 켜 주세요.</p></noscript>
-</body>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="theme-color" content="#173e35" />
+    <meta
+      name="description"
+      content="CobbleRouge 모험가를 위한 게임 위키. 첫 던전 준비, 파티와 코스트, 방과 보상, 섬의 작물과 탐험단까지 순서대로 알아보세요."
+    />
+    <title>CobbleRouge 위키 — 모험의 첫 페이지</title>
+    <link rel="icon" href="./favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="./styles.css" />
+    <script src="./app.js" defer></script>
+  </head>
+  <body>
+    <a class="skip" href="#main">본문으로 건너뛰기</a>
+    <header class="topbar">
+      <a class="brand" href="#/" aria-label="CobbleRouge 위키 홈"
+        ><span class="brand-symbol" aria-hidden="true">C<span>✦</span></span
+        ><span>CobbleRouge<small>모험가의 위키</small></span></a
+      >
+      <form id="search-form" class="global-search" role="search">
+        <span id="search-icon" aria-hidden="true"></span
+        ><input
+          id="search"
+          type="search"
+          name="q"
+          autocomplete="off"
+          placeholder="어떤 것이 궁금한가요?"
+          aria-label="위키 전체 검색"
+        /><kbd aria-hidden="true">⌘ / Ctrl K</kbd>
+      </form>
+      <div class="top-links">
+        <a class="top-start" href="#/article/getting-started"
+          >처음 오셨나요? <span aria-hidden="true">↗</span></a
+        ><button
+          id="menu-toggle"
+          class="menu-toggle"
+          aria-label="메뉴 열기"
+          aria-controls="sidebar"
+          aria-expanded="false"
+        >
+          ☰
+        </button>
+      </div>
+      <progress
+        id="reading-progress"
+        max="100"
+        value="0"
+        aria-label="본문 읽기 위치"
+        hidden
+      ></progress>
+    </header>
+    <button
+      id="menu-backdrop"
+      class="menu-backdrop"
+      aria-label="메뉴 닫기"
+      hidden
+      tabindex="-1"
+    ></button>
+    <aside class="sidebar" id="sidebar" aria-label="위키 탐색">
+      <div class="sidebar-label">YOUR ADVENTURE JOURNAL</div>
+      <nav id="navigation" aria-label="위키 분류"></nav>
+      <a class="sidebar-guide" href="#/article/getting-started"
+        ><span aria-hidden="true">✧</span
+        ><strong>첫 모험, 함께 준비해요.</strong>
+        <p>입장부터 정산까지<br />한눈에 읽는 시작 안내</p>
+        <span class="sidebar-guide-link">길라잡이 펼치기 ↗</span></a
+      >
+      <a
+        class="report"
+        href="https://github.com/Cobblemon-Rogelike-Server/cobblerouge-wiki/issues/new"
+        target="_blank"
+        rel="noopener noreferrer"
+        >틀린 내용 제보하기 ↗</a
+      >
+      <span class="sidebar-edition">COBBLEROUGE · FIELD GUIDE</span>
+    </aside>
+    <div class="workspace">
+      <main id="main" tabindex="-1">
+        <div class="loading" role="status">모험의 첫 페이지를 펼치는 중…</div>
+      </main>
+      <footer>
+        <span
+          ><strong>CobbleRouge</strong> 위키
+          <span class="footer-dot">·</span> 모험을 함께 알아가는 곳</span
+        >
+        <div>
+          <a
+            href="https://github.com/Cobblemon-Rogelike-Server/cobblerouge-wiki"
+            target="_blank"
+            rel="noopener noreferrer"
+            >GitHub ↗</a
+          ><a href="./LICENSE.txt">© 2026 Duskafka</a>
+        </div>
+      </footer>
+    </div>
+    <div id="toast" class="toast" role="status" aria-live="polite"></div>
+    <noscript
+      ><p class="noscript">
+        위키를 탐색하려면 브라우저에서 JavaScript를 켜 주세요.
+      </p></noscript
+    >
+  </body>
 </html>
