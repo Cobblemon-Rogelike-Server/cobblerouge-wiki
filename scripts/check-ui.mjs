@@ -87,18 +87,22 @@ async function until(fn, label, timeoutMs = 15000) {
 }
 try {
   let port;
-  await until(async () => {
-    try {
-      port = Number(
-        (
-          await fs.readFile(path.join(profile, "DevToolsActivePort"), "utf8")
-        ).split("\n")[0],
-      );
-      return port > 0;
-    } catch {
-      return false;
-    }
-  }, "Chromium debugging port", 45000);
+  await until(
+    async () => {
+      try {
+        port = Number(
+          (
+            await fs.readFile(path.join(profile, "DevToolsActivePort"), "utf8")
+          ).split("\n")[0],
+        );
+        return port > 0;
+      } catch {
+        return false;
+      }
+    },
+    "Chromium debugging port",
+    45000,
+  );
   const tabs = await (await fetch(`http://127.0.0.1:${port}/json/list`)).json();
   page = await connectPage(
     tabs.find((t) => t.type === "page").webSocketDebuggerUrl,
@@ -365,6 +369,29 @@ try {
   await overflow("guide mobile");
   await shot("guide-mobile");
   await shot("guide-mobile-full", true);
+  assert.equal(
+    await evaluate(`document.querySelector('.mobile-toc').open`),
+    false,
+  );
+  await evaluate(`document.querySelector('.mobile-toc summary').click()`);
+  assert.equal(
+    await evaluate(`document.querySelector('.mobile-toc').open`),
+    true,
+  );
+  await evaluate(
+    `document.querySelector('#mobile-toc-list a[data-section="section-3"]').click()`,
+  );
+  assert.equal(
+    await evaluate(`document.querySelector('.mobile-toc').open`),
+    false,
+  );
+  await until(
+    () =>
+      evaluate(
+        `document.querySelector('#section-3').getBoundingClientRect().top>=document.querySelector('.topbar').getBoundingClientRect().bottom && document.querySelector('#section-3').getBoundingClientRect().top<200`,
+      ),
+    "mobile table of contents scroll",
+  );
   for (const hash of [
     "#/dungeon",
     "#/crops",

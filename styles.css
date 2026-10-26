@@ -15,7 +15,7 @@
 }
 html {
   scroll-behavior: smooth;
-  scroll-padding-top: 110px;
+  scroll-padding-top: calc(var(--header) + 30px);
 }
 body {
   margin: 0;
@@ -1291,6 +1291,7 @@ footer a:hover {
   border-bottom: 1px solid var(--line);
 }
 .article-heading h1 {
+  text-wrap: balance;
   margin: 12px 0 15px;
   font-size: 36px;
   line-height: 1.35;
@@ -3246,6 +3247,75 @@ footer a:hover {
     font-size: 9px;
   }
   .entry-copy p {
+    font-size: 11px;
+  }
+}
+.mobile-toc {
+  display: none;
+}
+@media (max-width: 1000px) {
+  .article-aside {
+    display: none;
+  }
+  .article-layout {
+    display: block;
+  }
+  .mobile-toc {
+    display: block;
+    margin: 0 0 26px;
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    background: #f0f4e9;
+  }
+  .mobile-toc summary {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    min-height: 48px;
+    padding: 12px 16px;
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    list-style: none;
+  }
+  .mobile-toc summary::-webkit-details-marker {
+    display: none;
+  }
+  .mobile-toc summary svg {
+    width: 17px;
+    height: 17px;
+  }
+  .mobile-toc summary span {
+    margin-left: auto;
+    font-size: 18px;
+    font-weight: 400;
+  }
+  .mobile-toc[open] summary span {
+    transform: rotate(45deg);
+  }
+  #mobile-toc-list {
+    list-style: none;
+    margin: 0;
+    padding: 0 16px 14px;
+  }
+  #mobile-toc-list a {
+    display: block;
+    padding: 9px 10px;
+    border-left: 2px solid transparent;
+    font-size: 12px;
+    color: #536e47;
+    line-height: 1.8;
+  }
+  #mobile-toc-list a[aria-current="true"] {
+    border-color: #597b4f;
+    background: #e5edda;
+    color: #244c30;
+  }
+  #mobile-toc-list .toc-h3 {
+    display: list-item;
+  }
+  #mobile-toc-list .toc-h3 a {
+    padding-left: 23px;
     font-size: 11px;
   }
 }
