@@ -77,8 +77,9 @@ browser.stderr.on("data", (chunk) => {
   errors += chunk;
 });
 const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
-async function until(fn, label) {
-  for (let i = 0; i < 200; i++) {
+async function until(fn, label, timeoutMs = 15000) {
+  const deadline = Date.now() + timeoutMs;
+  while (Date.now() < deadline) {
     if (await fn()) return;
     await delay(30);
   }
@@ -97,7 +98,7 @@ try {
     } catch {
       return false;
     }
-  }, "Chromium debugging port");
+  }, "Chromium debugging port", 45000);
   const tabs = await (await fetch(`http://127.0.0.1:${port}/json/list`)).json();
   page = await connectPage(
     tabs.find((t) => t.type === "page").webSocketDebuggerUrl,
