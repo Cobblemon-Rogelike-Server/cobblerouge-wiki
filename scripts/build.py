@@ -167,9 +167,6 @@ def main():
     OUT.mkdir()
     for filename in ['index.html', 'styles.css', 'app.js', 'favicon.svg']:
         shutil.copy(ROOT / filename, OUT / filename)
-    editorial = ROOT / 'assets' / 'editorial'
-    if editorial.is_dir():
-        shutil.copytree(editorial, OUT / 'assets' / 'editorial')
     image_names = restore(OUT)
     shutil.copy(ROOT / 'LICENSE', OUT / 'LICENSE.txt')
     (OUT / '.nojekyll').write_text('')
