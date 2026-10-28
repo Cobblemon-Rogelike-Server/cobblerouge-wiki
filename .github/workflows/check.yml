@@ -31,10 +31,16 @@ jobs:
           export CHROMIUM_PATH="$(command -v google-chrome || command -v chromium)"
           test -n "$CHROMIUM_PATH"
           node scripts/check-ui.mjs
+      - name: Check external links anonymously
+        env:
+          WIKI_UI_ARTIFACTS: ${{ runner.temp }}/wiki-screenshots
+        run: python3 scripts/check-external-links.py
       - uses: actions/upload-artifact@v4
         if: always()
         with:
           name: wiki-screenshots
-          path: ${{ runner.temp }}/wiki-screenshots/*.png
+          path: |
+            ${{ runner.temp }}/wiki-screenshots/*.png
+            ${{ runner.temp }}/wiki-screenshots/*.json
           if-no-files-found: ignore
           retention-days: 7
