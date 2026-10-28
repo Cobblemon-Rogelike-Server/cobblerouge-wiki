@@ -9,13 +9,13 @@ from image_assets import restore
 ROOT = Path(__file__).resolve().parents[1]
 OUT = ROOT / 'dist'
 CATEGORIES = [
-    {'id': 'guides', 'name': '플레이 길라잡이', 'label': 'GUIDE', 'description': '첫 모험 준비부터 재배와 섬 꾸미기까지', 'icon': 'compass'},
-    {'id': 'crops', 'name': '서버 작물', 'label': 'FARMING', 'description': '심는 곳, 성장 과정, 수확과 가격', 'icon': 'sprout'},
-    {'id': 'trees', 'name': '전용 나무', 'label': 'TREES', 'description': '작은 살구나무부터 거대한 세계나무까지', 'icon': 'tree'},
-    {'id': 'wood', 'name': '목재 세트', 'label': 'BUILDING', 'description': '나만의 섬을 만드는 여덟 가지 목재', 'icon': 'blocks'},
-    {'id': 'decor', 'name': '장식 블록', 'label': 'DECORATION', 'description': '등불과 바구니로 채우는 작은 풍경', 'icon': 'lamp'},
-    {'id': 'dungeon', 'name': '던전 도감', 'label': 'DUNGEON', 'description': '입장 준비부터 여섯 종류의 방과 보상까지', 'icon': 'swords'},
-    {'id': 'guild', 'name': '탐험단', 'label': 'GUILD', 'description': '함께 쌓는 의뢰, 탐사와 탐험단의 성장', 'icon': 'users'},
+    {'id': 'guides', 'name': '플레이 길라잡이', 'label': 'GUIDE', 'description': '처음 시작하기, 재배와 섬 꾸미기', 'icon': 'compass'},
+    {'id': 'crops', 'name': '서버 작물', 'label': 'FARMING', 'description': '재배 환경, 성장 시간, 수확과 가격', 'icon': 'sprout'},
+    {'id': 'trees', 'name': '전용 나무', 'label': 'TREES', 'description': '나무 8종의 묘목·열매·구성 블록', 'icon': 'tree'},
+    {'id': 'wood', 'name': '목재 세트', 'label': 'BUILDING', 'description': '목재 8종의 건축 블록과 조합법', 'icon': 'blocks'},
+    {'id': 'decor', 'name': '장식 블록', 'label': 'DECORATION', 'description': '등·화분·바구니 등 장식 블록의 조합법', 'icon': 'lamp'},
+    {'id': 'dungeon', 'name': '던전 도감', 'label': 'DUNGEON', 'description': '입장 조건, 방 종류, 전투와 종료 보상', 'icon': 'swords'},
+    {'id': 'guild', 'name': '탐험단', 'label': 'GUILD', 'description': '가입, 직책, 의뢰와 합동 탐사', 'icon': 'users'},
 ]
 
 
